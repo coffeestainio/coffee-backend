@@ -1,7 +1,7 @@
 const Contact = require('../models/contact'); 
 const sgMail = require('@sendgrid/mail');
 
-sgMail.setApiKey('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');
+
 
 /**
 * Save a new quote
@@ -40,6 +40,9 @@ const addContact = (req, res, next) => {
 }
 
 const sendEmail = (contact)=>{
+
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+    console.log(process.env.SENDGRID_API_KEY);
     const msg = {
         to: contact.email,
         from: {
