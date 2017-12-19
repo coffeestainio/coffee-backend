@@ -1,4 +1,7 @@
 const Contact = require('../models/contact'); 
+const sgMail = require('@sendgrid/mail');
+
+sgMail.setApiKey('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');
 
 /**
 * Save a new quote
@@ -24,6 +27,7 @@ const addContact = (req, res, next) => {
             if (err) {
                 return res.status(500).send(err)
             } else {
+                sendEmail(contact)
                 res.status(200).send({ Result: 'Success' })
             }
         });
@@ -33,6 +37,19 @@ const addContact = (req, res, next) => {
             res.status(500).send(err);
         }
     }
+}
+
+const sendEmail = (contact)=>{
+    const msg = {
+        to: contact.email,
+        from: {
+            name: 'Pablo at CoffeStain',
+            email: 'pcalvo@coffeestain.io',
+          },
+        subject: 'Thanks for submitting your info',
+        html: '<strong>Hi</strong></br><p>I just got your contact information. I will try to contact you personally as soon as possible.</p>',
+      };
+      sgMail.send(msg);
 }
 
 module.exports = {

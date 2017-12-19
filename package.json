@@ -26,6 +26,7 @@
     "failFast": true
   },
   "dependencies": {
+    "@sendgrid/mail": "^6.1.4",
     "body-parser": "^1.17.2",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.3",
