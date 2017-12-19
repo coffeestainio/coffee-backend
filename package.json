@@ -1,0 +1,44 @@
+{
+  "name": "sunqueques_api",
+  "version": "1.0.0",
+  "description": "Backend API for sunqueques",
+  "main": "./src/index.js",
+  "engines": {
+    "node": "8.5.0"
+  },
+  "config": {
+    "env": "development",
+    "httpHost": "127.0.0.1",
+    "httpPort": 8080,
+    "mongoUrl": "mongodb://sunqueques:admin@sunqueques-shard-00-00-jvbdp.mongodb.net:27017,sunqueques-shard-00-01-jvbdp.mongodb.net:27017,sunqueques-shard-00-02-jvbdp.mongodb.net:27017/test?ssl=true&replicaSet=sunqueques-shard-0&authSource=admin"
+  },
+  "scripts": {
+    "start": "node ./scripts/start",
+    "lint": "eslint -c .eslintrc src",
+    "test": "node node_modules/.bin/ava"
+  },
+  "ava": {
+    "files": [
+      "./tests/*.js",
+      "./tests/**/*.js"
+    ],
+    "concurrency": 1,
+    "failFast": true
+  },
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cookie-parser": "^1.4.3",
+    "cors": "^2.8.3",
+    "dotenv": "^4.0.0",
+    "express": "4.15.4",
+    "helmet": "^3.6.1",
+    "moment-timezone": "^0.5.13",
+    "mongoose": "^4.10.8",
+    "mongoose-gen": "^2.1.1",
+    "mongoose-role": "^2.0.1",
+    "morgan": "^1.8.2"
+  },
+  "devDependencies": {
+    "ava": "^0.17.0"
+  }
+}
